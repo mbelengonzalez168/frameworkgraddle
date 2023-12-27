@@ -2,11 +2,11 @@ pipeline {
     agent any
     
     parameters { //parametros
-        sring(name:'tag' , description: 'tag para ejecucion de escenario o plan de pruebas')
+        string(name:'tag' , description: 'tag para ejecucion de escenario o plan de pruebas')
     }
     
     tools{ //herramientas utilizadas para la ejecucion, previamente configuradas
-        gradle 'gradle-7-6'
+        gradle 'gradle_7-6'
     }
     
     stages{  //etapas, se define el trabajo del pipeline dividido en bloques stage
