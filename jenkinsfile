@@ -16,6 +16,11 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/mbelengonzalez168/frameworkgraddle.git'
             }
         }
+        stage('Xvfb') {
+            steps {
+                sh 'Xvfb :99 -ac -screen 0 1280x1024x24 & export DISPLAY=$DISPLAY'
+      }
+    }
         stage('exec gradle'){
             steps{
                 //imprimo la version de graddle
