@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    
+    parameters { //parametros
+        sring(name:'tag' , description: 'tag para ejecucion de escenario o plan de pruebas')
+    }
+    
+    tools{ //herramientas utilizadas para la ejecucion, previamente configuradas
+        gradle 'gradle-7-6'
+    }
+    
+    stages{  //etapas, se define el trabajo del pipeline dividido en bloques stage
+        stage('git clone'){
+            steps{
+                //clono el repositorio desde Github
+                git branch: 'master', url: 'https://github.com/mbelengonzalez168/frameworkgraddle/'
+            }
+        }
+        stage('exec gradle'){
+            steps{
+                //imprimo la version de graddle
+                sh 'gradle --version'
+                sh 'gradle runWithCucumber -p tags=${tag)}' //${tag)} utilizacion del parametro
+                sh 'ls'
+            }
+        }
+        post { //manejo de respuestas
+            success {
+                // Imprimo el mensaje de exito
+                echo 'El pipeline se ejecutó exitosamente.'
+            }
+            failure {
+                // Imprimo el mensaje de falla
+                echo 'El pipeline ha fallado.'
+                //ver de manejar los errores
+            }
+        }
+    }
+}
