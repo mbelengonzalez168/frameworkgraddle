@@ -24,16 +24,5 @@ pipeline {
                 sh 'ls'
             }
         }
-        post { //manejo de respuestas
-            success {
-                // Imprimo el mensaje de exito
-                echo 'El pipeline se ejecutó exitosamente.'
-            }
-            failure {
-                // Imprimo el mensaje de falla
-                echo 'El pipeline ha fallado.'
-                //ver de manejar los errores
-            }
-        }
     }
 }
