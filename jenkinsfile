@@ -13,14 +13,14 @@ pipeline {
         stage('git clone'){
             steps{
                 //clono el repositorio desde Github
-                git branch: 'master', url: 'https://github.com/mbelengonzalez168/frameworkgraddle/'
+                git branch: 'master', url: 'https://github.com/mbelengonzalez168/frameworkgraddle.git'
             }
         }
         stage('exec gradle'){
             steps{
                 //imprimo la version de graddle
                 sh 'gradle --version'
-                sh 'gradle runWithCucumber -p tags=${tag)}' //${tag)} utilizacion del parametro
+                sh 'gradle runWithCucumber -p tags=${tag}' //${tag)} utilizacion del parametro
                 sh 'ls'
             }
         }
