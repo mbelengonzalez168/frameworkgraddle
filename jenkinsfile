@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     parameters { //parametros
-        string(name:'tag' , description: 'tag para ejecucion de escenario o plan de pruebas')
+        TAG = "${params.TAG}"
     }
     
     tools{ //herramientas utilizadas para la ejecucion, previamente configuradas
@@ -20,7 +20,7 @@ pipeline {
             steps{
                 //imprimo la version de graddle
                 sh 'gradle --version'
-                sh 'gradle runWithCucumber -p tags=${tag}' //${tag)} utilizacion del parametro
+                sh 'gradle runWithCucumber -p tags=${TAG}' //${tag)} utilizacion del parametro
                 sh 'ls'
             }
         }
