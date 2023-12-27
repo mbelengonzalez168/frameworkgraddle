@@ -1,12 +1,12 @@
 pipeline {
     agent any
     
-    enviroment { //parametros
-        TAG = "${params.TAG}"
-    }
-    
+
     tools{ //herramientas utilizadas para la ejecucion, previamente configuradas
         gradle 'gradle_7-6'
+    }
+    enviroment { //parametros
+        TAG = "${params.TAG}"
     }
     
     stages{  //etapas, se define el trabajo del pipeline dividido en bloques stage
